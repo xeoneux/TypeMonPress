@@ -2,18 +2,18 @@ import * as express from "express"
 
 import { Application } from "express"
 
-class TypeMonPress {
-    public app: Application
+import config from "./config/config"
 
-    constructor() {
+class App {
+    private app: Application
+
+    constructor(config: object) {
         this.app = express()
     }
 
-    public bootstrap() {
+    public run() {
         this.app.listen(1234)
     }
 }
 
-const app = new TypeMonPress()
-
-app.bootstrap()
+new App(config).run()
