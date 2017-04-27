@@ -1,0 +1,8 @@
+{
+  "name": "TypeMonPress",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/xeoneux/TypeMonPress.git",
+  "author": "Aayush Kapoor <xeoneux@icloud.com>",
+  "license": "MIT"
+}
