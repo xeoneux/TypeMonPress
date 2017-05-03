@@ -7,6 +7,7 @@ import * as cors from "cors"
 import * as express from "express"
 import * as helmet from "helmet"
 import config from "./config/config"
+import router from "./routes"
 
 class App {
     private app: Application
@@ -29,6 +30,8 @@ class App {
         app.use(json())
         app.use(helmet())
         app.use(urlencoded({ extended: true }))
+
+        app.use(router)
     }
 }
 
