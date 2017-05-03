@@ -6,16 +6,11 @@ import { userModel } from "../models/user.model"
 
 class UserController {
 
-    public infoUser(req: Request, res: Response) {
+    public async infoUser(req: Request, res: Response) {
         const id = req.body.id
 
-        userModel.findById(id)
-            .then((user: IUser) => {
-                res.json(user)
-            })
-            .catch((error) => {
-                res.json(notFound(error))
-            })
+        const user = await userModel.findById(id)
+        user ? res.json(user) : res.json(notFound())
     }
 }
 
