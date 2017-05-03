@@ -1,8 +1,8 @@
 import { Request, Response } from "express"
-import { IUser } from "../models/user.model"
+import { IUser } from "../models"
 
 import { notFound } from "Boom"
-import { userModel } from "../models/user.model"
+import { userModel } from "../models"
 
 class UserController {
 

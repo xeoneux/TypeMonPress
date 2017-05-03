@@ -11,10 +11,10 @@ export interface IUser extends Document {
     validatePassword(): boolean
 }
 
-export const UserSchema = new Schema({
+const userSchema = new Schema({
     email: { required: true, type: Schema.Types.String, unique: true },
     name: { required: true, type: Schema.Types.String },
     password: { required: true, type: Schema.Types.String },
 }, { timestamps: true })
 
-export const userModel = model<IUser>("User", UserSchema)
+export const userModel = model<IUser>("User", userSchema)
