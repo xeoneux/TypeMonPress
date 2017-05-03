@@ -1,6 +1,7 @@
 import { Request, Response } from "express"
 import { IUser } from "../models/user.model"
 
+import { notFound } from "Boom"
 import { userModel } from "../models/user.model"
 
 class UserController {
@@ -13,7 +14,7 @@ class UserController {
                 res.json(user)
             })
             .catch((error) => {
-                res.json(error)
+                res.json(notFound(error))
             })
     }
 }
