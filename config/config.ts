@@ -17,10 +17,12 @@ if (error) {
 }
 
 export default {
-    env: env.NODE_ENV,
     mongo: {
         host: env.MONGO_HOST,
         port: env.MONGO_PORT,
     },
-    port: env.PORT,
+    node: {
+        env: env.NODE_ENV,
+        port: env.PORT,
+    },
 }
