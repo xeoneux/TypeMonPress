@@ -1,16 +1,21 @@
 import { Request, Response } from "express"
 import { IUser } from "../models"
 
-import { notFound } from "Boom"
+import { BAD_REQUEST, NOT_FOUND, OK } from "http-status-codes"
 import { userModel } from "../models"
 
 class UserController {
 
     public async infoUser(req: Request, res: Response) {
-        const id = req.body.id
-
-        const user = await userModel.findById(id)
-        user ? res.json(user) : res.json(notFound())
+        const id = req.params.id
+        try {
+            const user = await userModel.findById(id)
+            user
+                ? res.status(OK).json(user)
+                : res.status(NOT_FOUND).send()
+        } catch (error) {
+            res.status(BAD_REQUEST).json(error)
+        }
     }
 }
 

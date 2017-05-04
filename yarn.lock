@@ -9,12 +9,6 @@
     "@types/express" "*"
     "@types/node" "*"
 
-"@types/boom@^4.3.1":
-  version "4.3.1"
-  resolved "https://registry.yarnpkg.com/@types/boom/-/boom-4.3.1.tgz#840c27e041106b1fc0b14e7244f4084fb3d7c558"
-  dependencies:
-    "@types/node" "*"
-
 "@types/bson@*":
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/@types/bson/-/bson-1.0.3.tgz#6c26f0876bf9d8cbb06edd4019e29354bf3a03e0"
@@ -63,6 +57,10 @@
   resolved "https://registry.yarnpkg.com/@types/helmet/-/helmet-0.0.34.tgz#59225446857db0d236ae31b8d50cc6b8a48f1b00"
   dependencies:
     "@types/express" "*"
+
+"@types/http-status-codes@^1.0.29":
+  version "1.0.29"
+  resolved "https://registry.yarnpkg.com/@types/http-status-codes/-/http-status-codes-1.0.29.tgz#d308c9aa1f91f64c0e6f751de2789e87c7f0aa0c"
 
 "@types/joi@^10.3.0":
   version "10.3.1"
@@ -152,12 +150,6 @@ body-parser@^1.17.1:
     qs "6.4.0"
     raw-body "~2.2.0"
     type-is "~1.6.14"
-
-boom@^4.3.1:
-  version "4.3.1"
-  resolved "https://registry.yarnpkg.com/boom/-/boom-4.3.1.tgz#4f8a3005cb4a7e3889f749030fd25b96e01d2e31"
-  dependencies:
-    hoek "4.x.x"
 
 brace-expansion@^1.0.0:
   version "1.1.7"
@@ -511,6 +503,10 @@ http-errors@~1.6.1:
     inherits "2.0.3"
     setprototypeof "1.0.3"
     statuses ">= 1.3.1 < 2"
+
+http-status-codes@^1.1.6:
+  version "1.1.6"
+  resolved "https://registry.yarnpkg.com/http-status-codes/-/http-status-codes-1.1.6.tgz#7a75d2b94d35a93183f39a0c8a6eb8963c20e50d"
 
 iconv-lite@0.4.15:
   version "0.4.15"

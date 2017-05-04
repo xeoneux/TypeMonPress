@@ -3,7 +3,7 @@ import { userController } from "../controllers"
 
 const router = Router()
 
-router.route("/:userId")
+router.route("/:id")
     .get(userController.infoUser)
 
 export default router
