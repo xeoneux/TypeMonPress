@@ -1,9 +1,9 @@
 import { Router } from "express"
-import { userController } from "../controllers"
+import { userInfo } from "../controllers"
 
 const router = Router()
 
 router.route("/:id")
-    .get(userController.infoUser)
+    .get(userInfo)
 
 export default router
