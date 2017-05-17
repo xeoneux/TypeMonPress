@@ -6,6 +6,6 @@ import { userValidation } from "../validations"
 const router = Router()
 
 router.route("/:id")
-    .get(userController.userInfo, validate(userValidation.userInfo))
+    .get(userValidation.userInfo, userController.userInfo)
 
 export default router
