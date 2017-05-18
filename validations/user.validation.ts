@@ -4,9 +4,8 @@ import { validator } from "../helpers/validator"
 
 class UserValidation {
     public userInfo = validator({
-        email: {
-            in: "query",
-            isEmail: { errorMessage: "Invalid Email" },
+        id: {
+            in: "params",
             notEmpty: true,
         },
     })

@@ -1,11 +1,13 @@
 import { Application } from "express"
 
 import { json, urlencoded } from "body-parser"
-import * as compression from "compression"
-import * as cookieParser from "cookie-parser"
-import * as cors from "cors"
-import * as express from "express"
-import * as helmet from "helmet"
+import compression = require("compression")
+import cookieParser = require("cookie-parser")
+import cors = require("cors")
+import express = require("express")
+import validator = require("express-validator")
+import helmet = require("helmet")
+
 import config from "./config/config"
 import router from "./routes"
 
@@ -28,6 +30,7 @@ class App {
         app.use(cookieParser())
         app.use(cors())
         app.use(json())
+        app.use(validator())
         app.use(helmet())
         app.use(urlencoded({ extended: true }))
 

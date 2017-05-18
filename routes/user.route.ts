@@ -1,5 +1,4 @@
 import { Router } from "express"
-import * as validate from "express-validation"
 import { userController } from "../controllers"
 import { userValidation } from "../validations"
 

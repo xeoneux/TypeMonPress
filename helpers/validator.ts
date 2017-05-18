@@ -1,8 +1,7 @@
 import { NextFunction, Request, Response } from "express"
-import "express-validator"
 import * as util from "util"
 
-export function validator(schema) {
+export function validator(schema: object) {
     return async (req: Request, res: Response, next: NextFunction) => {
         req.check(schema)
 
