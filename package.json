@@ -9,6 +9,7 @@
     "dev": "tsc && nodemon bin"
   },
   "dependencies": {
+    "bluebird": "^3.5.0",
     "body-parser": "^1.17.1",
     "compression": "^1.6.2",
     "cookie-parser": "^1.4.3",
@@ -29,7 +30,6 @@
     "@types/cors": "^2.8.1",
     "@types/dotenv": "^4.0.0",
     "@types/express": "^4.0.35",
-    "@types/express-validator": "^2.20.33",
     "@types/helmet": "^0.0.34",
     "@types/http-status-codes": "^1.0.29",
     "@types/joi": "^10.3.0",

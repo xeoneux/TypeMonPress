@@ -49,12 +49,6 @@
   dependencies:
     "@types/node" "*"
 
-"@types/express-validator@^2.20.33":
-  version "2.20.33"
-  resolved "https://registry.yarnpkg.com/@types/express-validator/-/express-validator-2.20.33.tgz#8fcd2855db2ed79099adff2183aee9a129f847d6"
-  dependencies:
-    "@types/express" "*"
-
 "@types/express@*", "@types/express@^4.0.35", "@types/express@~4.0.34":
   version "4.0.35"
   resolved "https://registry.yarnpkg.com/@types/express/-/express-4.0.35.tgz#6267c7b60a51fac473467b3c4a02cd1e441805fe"
@@ -237,7 +231,7 @@ bluebird@2.10.2:
   version "2.10.2"
   resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-2.10.2.tgz#024a5517295308857f14f91f1106fc3b555f446b"
 
-bluebird@^3.4.0:
+bluebird@^3.4.0, bluebird@^3.5.0:
   version "3.5.0"
   resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-3.5.0.tgz#791420d7f551eea2897453a8a77653f96606d67c"
 
