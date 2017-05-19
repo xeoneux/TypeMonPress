@@ -4,7 +4,7 @@ import { userValidation } from "../validations"
 
 const router = Router()
 
-router.route("/:id")
-    .get(userValidation.userInfo, userController.userInfo)
+router.route("/").get(userValidation.index, userController.index)
+router.route("/:id").get(userValidation.userInfo, userController.userInfo)
 
 export default router
