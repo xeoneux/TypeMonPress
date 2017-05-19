@@ -6,7 +6,8 @@
   "author": "Aayush Kapoor <xeoneux@icloud.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "tsc && nodemon bin"
+    "dev": "tsc && nodemon bin",
+    "doc": "apidoc"
   },
   "dependencies": {
     "bluebird": "^3.5.0",

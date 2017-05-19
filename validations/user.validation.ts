@@ -35,10 +35,7 @@ class UserValidation {
     })
 
     public userInfo = validator({
-        id: {
-            in: "params",
-            notEmpty: true,
-        },
+        id: { in: "params", notEmpty: true },
     })
 }
 
