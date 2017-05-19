@@ -12,11 +12,26 @@ class UserValidation {
             },
             optional: true,
         },
-        skip: {
-            in: "query",
-            isInt: true,
-            optional: true,
+        skip: { in: "query", isInt: true, optional: true },
+    })
+
+    public create = validator({
+        email: {
+            in: "body",
+            isEmail: {
+                errorMessage: "Invalid Email Address",
+            },
+            notEmpty: true,
         },
+        name: {
+            in: "body",
+            isLength: {
+                errorMessage: "Must Be Between 2 & 20 Characters Long!",
+                options: [{ min: 2, max: 10 }],
+            },
+            notEmpty: true,
+        },
+        password: { in: "body", notEmpty: true },
     })
 
     public userInfo = validator({
