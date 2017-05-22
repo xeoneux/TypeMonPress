@@ -17,8 +17,8 @@ class UserController {
     }
 
     public async create(req: Request, res: Response, next: NextFunction) {
-        const {name, email, password} = req.body
-        const user = new userModel({name, email, password})
+        const { name, email, password } = req.body
+        const user = new userModel({ name, email, password })
 
         try {
             res.json(await user.save())
@@ -27,6 +27,16 @@ class UserController {
         }
     }
 
+    /**
+     * @api {get} /user/:id Request User Information
+     * @apiName userInfo
+     * @apiGroup User
+     *
+     * @apiParam {Number} id User's Unique Object ID.
+     *
+     * @apiSuccess {String} firstname Firstname of the User.
+     * @apiSuccess {String} lastname  Lastname of the User.
+     */
     public async userInfo(req: Request, res: Response, next: NextFunction) {
         const id = req.params.id
         try {

@@ -3,11 +3,13 @@ import { Application } from "express"
 import bluebird = require("bluebird")
 import bodyParser = require("body-parser")
 import compression = require("compression")
+import connectMongo = require("connect-mongo")
 import cookieParser = require("cookie-parser")
 import cors = require("cors")
 import express = require("express")
 import helmet = require("helmet")
 import mongoose = require("mongoose")
+import session = require("express-session")
 import validator = require("express-validator")
 
 import config from "./config"
@@ -16,7 +18,7 @@ import router from "./routes"
 class App {
     private app: Application
 
-    constructor(config: object) {
+    constructor() {
         this.app = express()
         this.configure()
         this.database()
@@ -37,6 +39,16 @@ class App {
         app.use(bodyParser.urlencoded({ extended: true }))
         app.use(validator())
 
+        const MongoStore = connectMongo(session)
+        app.use(session({
+            resave: false,
+            saveUninitialized: true,
+            secret: "secret",
+            store: new MongoStore({
+                mongooseConnection: mongoose.connection,
+            }),
+        }))
+
         app.use(router)
     }
 
@@ -49,4 +61,4 @@ class App {
     }
 }
 
-new App(config).run()
+new App().run()
