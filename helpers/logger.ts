@@ -1,18 +1,24 @@
+import fs = require("fs")
 import winston = require("winston")
 
-export const logger = new winston.Logger({
+if (!fs.existsSync("log")) {
+    fs.mkdirSync("log")
+}
+
+winston.setLevels(winston.config.syslog.levels)
+winston.addColors(winston.config.syslog.colors)
+
+const logger = new winston.Logger({
     exitOnError: false,
     transports: [
-        new winston.transports.DailyRotateFile({
+        new winston.transports.File({
             colorize: false,
-            datePattern: "yy-MM-dd.",
-            filename: "../log/.log",
+            filename: "./log/log",
             handleExceptions: true,
             json: true,
             level: "info",
             maxFiles: 5,
-            maxsize: 5242880, // 5 MB
-            prepend: true,
+            maxsize: 1024 * 1024 * 10, // 10 MB
         }),
         new winston.transports.Console({
             colorize: true,
@@ -22,3 +28,5 @@ export const logger = new winston.Logger({
         }),
     ],
 })
+
+export default logger

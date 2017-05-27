@@ -12,6 +12,7 @@ import session = require("express-session")
 import validator = require("express-validator")
 
 import config from "./config"
+import logger from "./helpers/logger"
 import router from "./routes"
 
 // Database
@@ -25,6 +26,7 @@ mongoose.connection.on("error", () => {
 const app = express()
 
 if (config.node.env === "development") {
+    logger.info("Setup Logger")
     app.use(morgan("dev"))
 }
 
