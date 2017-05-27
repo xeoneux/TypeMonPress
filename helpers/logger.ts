@@ -6,7 +6,7 @@ export const logger = new winston.Logger({
         new winston.transports.DailyRotateFile({
             colorize: false,
             datePattern: "yy-MM-dd.",
-            filename: "../bin/log",
+            filename: "../log/.log",
             handleExceptions: true,
             json: true,
             level: "info",
