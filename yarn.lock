@@ -104,6 +104,12 @@
     "@types/mongodb" "*"
     "@types/node" "*"
 
+"@types/morgan@^1.7.32":
+  version "1.7.32"
+  resolved "https://registry.yarnpkg.com/@types/morgan/-/morgan-1.7.32.tgz#fab1ece4dae172e1a377d563d33e3634fa04927d"
+  dependencies:
+    "@types/express" "*"
+
 "@types/node@*", "@types/node@^7.0.14":
   version "7.0.14"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-7.0.14.tgz#1470fa002a113316ac9d9ad163fc738c7a0de2a4"
@@ -236,6 +242,10 @@ babel-code-frame@^6.22.0:
 balanced-match@^0.4.1:
   version "0.4.2"
   resolved "https://registry.yarnpkg.com/balanced-match/-/balanced-match-0.4.2.tgz#cb3f3e3c732dc0f01ee70b403f302e61d7709838"
+
+basic-auth@~1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/basic-auth/-/basic-auth-1.1.0.tgz#45221ee429f7ee1e5035be3f51533f1cdfd29884"
 
 bcrypt-pbkdf@^1.0.0:
   version "1.0.1"
@@ -508,9 +518,15 @@ debug@2.6.4:
   dependencies:
     ms "0.7.3"
 
-debug@2.6.7, debug@^2.2.0:
+debug@2.6.7:
   version "2.6.7"
   resolved "https://registry.yarnpkg.com/debug/-/debug-2.6.7.tgz#92bad1f6d05bbb6bba22cca88bcd0ec894c2861e"
+  dependencies:
+    ms "2.0.0"
+
+debug@2.6.8, debug@^2.2.0:
+  version "2.6.8"
+  resolved "https://registry.yarnpkg.com/debug/-/debug-2.6.8.tgz#e731531ca2ede27d188222427da17821d68ff4fc"
   dependencies:
     ms "2.0.0"
 
@@ -1372,6 +1388,16 @@ mongoose@^4.9.7:
     muri "1.2.1"
     regexp-clone "0.0.1"
     sliced "1.0.1"
+
+morgan@^1.8.2:
+  version "1.8.2"
+  resolved "https://registry.yarnpkg.com/morgan/-/morgan-1.8.2.tgz#784ac7734e4a453a9c6e6e8680a9329275c8b687"
+  dependencies:
+    basic-auth "~1.1.0"
+    debug "2.6.8"
+    depd "~1.1.0"
+    on-finished "~2.3.0"
+    on-headers "~1.0.1"
 
 mpath@0.2.1:
   version "0.2.1"
