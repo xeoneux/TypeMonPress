@@ -18,15 +18,12 @@ import router from "./routes"
 // Database
 mongoose.Promise = bluebird
 mongoose.connect(config.mongo.host, { server: { socketOptions: { keepAlive: 1 } } })
-mongoose.connection.on("error", () => {
-    throw new Error(`Unable to Connect to Database: ${config.mongo.host} on Port ${config.mongo.port}`)
-})
+mongoose.connection.on("error", console.error.bind(console, `Connection Error on ${config.mongo.port}:`))
 
 // Configure
 const app = express()
 
 if (config.node.env === "development") {
-    logger.info("Setup Logger")
     app.use(morgan("dev"))
 }
 
@@ -48,5 +45,5 @@ app.use(session({
     }),
 }))
 app.use(router)
-
-app.listen(1234)
+app.listen(config.node.port)
+logger.info(`Server started on ${config.node.port}`)
