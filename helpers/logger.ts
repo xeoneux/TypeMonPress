@@ -1,9 +1,7 @@
-import fs = require("fs");
+import { existsSync, mkdirSync } from "fs";
 import winston = require("winston");
 
-if (!fs.existsSync("log")) {
-  fs.mkdirSync("log");
-}
+if (!existsSync("log")) mkdirSync("log");
 
 winston.setLevels(winston.config.syslog.levels);
 winston.addColors(winston.config.syslog.colors);

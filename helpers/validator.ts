@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import * as util from "util";
+import { inspect } from "util";
 
 export function validator(schema: object) {
   return async (req: Request, res: Response, next: NextFunction) => {
@@ -10,9 +10,7 @@ export function validator(schema: object) {
     if (!result.isEmpty()) {
       res
         .status(400)
-        .send(
-          "There have been validation errors: " + util.inspect(result.array())
-        );
+        .send("There have been validation errors: " + inspect(result.array()));
       return next(result);
     }
 
