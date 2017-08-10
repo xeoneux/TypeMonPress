@@ -1,13 +1,13 @@
 import passport = require("passport");
 import passportLocal = require("passport-local");
 
-import { userModel } from "../models";
+import { IUser, userModel } from "../models";
 import { Request, Response, NextFunction } from "express";
 
 const LocalStrategy = passportLocal.Strategy;
 
-passport.serializeUser<any, any>((user, done) => done(undefined, user.id));
-passport.deserializeUser((id, done) => {
+passport.serializeUser<IUser, String>((user, done) => done(undefined, user.id));
+passport.deserializeUser<IUser, String>((id, done) => {
   userModel.findById(id, (err, user) => {
     if (user) done(err, user);
     else done(new Error("User Not Found"));
