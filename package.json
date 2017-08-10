@@ -6,8 +6,8 @@
   "author": "Aayush Kapoor <xeoneux@icloud.com>",
   "license": "MIT",
   "scripts": {
-    "start": "tsc && concurrently -k -p \"[{name}]\" -n \"TS,Node\" -c \"cyan.bold,green.bold\" \"tsc -w\" \"nodemon dist\"",
-    "debug": "tsc && concurrently -k -p \"[{name}]\" -n \"TypeScript,Node\" -c \"cyan.bold,green.bold\" \"tsc -w\" \"nodemon --inspect dist\"",
+    "start": "tsc && concurrently -k -p \"[{name}]\" -n \"TypeScript,Node\" -c \"cyan.bold,yellow.bold\" \"tsc -w\" \"nodemon dist\"",
+    "debug": "tsc && concurrently -k -p \"[{name}]\" -n \"TypeScript,Node\" -c \"cyan.bold,yellow.bold\" \"tsc -w\" \"nodemon --inspect dist\"",
     "build": "apidoc -o dist/docs -e node_modules && tsc"
   },
   "dependencies": {
