@@ -35,7 +35,12 @@ class UserValidation {
   });
 
   public userInfo = validator({
-    id: { in: "params", notEmpty: true }
+    id: {
+      in: "params",
+      notEmpty: true,
+      isMongoId: true,
+      errorMessage: "Please provide a valid ID"
+    }
   });
 }
 

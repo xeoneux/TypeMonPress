@@ -8,6 +8,7 @@ import express = require("express");
 import helmet = require("helmet");
 import mongoose = require("mongoose");
 import morgan = require("morgan");
+import passport = require("passport");
 import session = require("express-session");
 import validator = require("express-validator");
 
@@ -47,6 +48,10 @@ app.use(
     })
   })
 );
-app.use(router);
+app.use(passport.initialize());
+app.use(passport.session());
+app.use("/api", router);
+
 app.listen(config.node.port);
+
 logger.info(`Server for ${config.node.env} started on ${config.node.port}`);
