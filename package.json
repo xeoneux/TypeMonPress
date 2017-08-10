@@ -6,8 +6,9 @@
   "author": "Aayush Kapoor <xeoneux@icloud.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "tsc && nodemon bin",
-    "doc": "apidoc -e node_modules"
+    "start": "tsc && concurrently -k -p \"[{name}]\" -n \"TS,Node\" -c \"cyan.bold,green.bold\" \"tsc -w\" \"nodemon dist\"",
+    "debug": "tsc && concurrently -k -p \"[{name}]\" -n \"TypeScript,Node\" -c \"cyan.bold,green.bold\" \"tsc -w\" \"nodemon --inspect dist\"",
+    "build": "apidoc -o dist/docs -e node_modules && tsc"
   },
   "dependencies": {
     "bluebird": "^3.5.0",
@@ -47,6 +48,7 @@
     "@types/passport": "^0.3.3",
     "@types/passport-local": "^1.0.30",
     "@types/winston": "^2.3.2",
+    "concurrently": "^3.5.0",
     "typescript": "^2.4.2"
   }
 }

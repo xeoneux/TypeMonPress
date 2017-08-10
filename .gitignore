@@ -57,6 +57,4 @@ typings/
 # dotenv environment variables file
 .env
 
-bin
-doc
-log
+dist

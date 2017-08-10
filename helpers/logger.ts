@@ -1,7 +1,7 @@
 import { existsSync, mkdirSync } from "fs";
 import winston = require("winston");
 
-if (!existsSync("log")) mkdirSync("log");
+if (!existsSync("logs")) mkdirSync("logs");
 
 winston.setLevels(winston.config.syslog.levels);
 winston.addColors(winston.config.syslog.colors);
@@ -11,7 +11,7 @@ const logger = new winston.Logger({
   transports: [
     new winston.transports.File({
       colorize: false,
-      filename: "./log/log",
+      filename: "./logs/log",
       handleExceptions: true,
       json: true,
       level: "info",
