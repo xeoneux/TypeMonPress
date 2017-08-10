@@ -6,9 +6,9 @@
   "author": "Aayush Kapoor <xeoneux@icloud.com>",
   "license": "MIT",
   "scripts": {
-    "start": "tsc && concurrently -k -p \"[{name}]\" -n \"TypeScript,Node\" -c \"cyan.bold,yellow.bold\" \"tsc -w\" \"nodemon dist\"",
-    "debug": "tsc && concurrently -k -p \"[{name}]\" -n \"TypeScript,Node\" -c \"cyan.bold,yellow.bold\" \"tsc -w\" \"nodemon --inspect dist\"",
-    "build": "apidoc -o dist/docs -e node_modules && tsc"
+    "start": "tsc && concurrently -k -p \"{name} >>>\" -n \"TypeScript,Node\" -c \"cyan.bold,yellow.bold\" \"tsc -w\" \"nodemon bin\"",
+    "debug": "tsc && concurrently -k -p \"{name} >>>\" -n \"TypeScript,Node\" -c \"cyan.bold,yellow.bold\" \"tsc -w\" \"nodemon --inspect bin\"",
+    "build": "apidoc -o bin/docs -e node_modules && tsc"
   },
   "dependencies": {
     "bluebird": "^3.5.0",
