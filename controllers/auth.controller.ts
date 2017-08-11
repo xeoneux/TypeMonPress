@@ -16,6 +16,13 @@ class AuthController {
       res.status(NOT_FOUND).send();
     }
   }
+
+  public async random(req: Request, res: Response, next: NextFunction) {
+    return res.json({
+      user: req.user,
+      num: Math.random() * 100
+    });
+  }
 }
 
 export const authController = new AuthController();

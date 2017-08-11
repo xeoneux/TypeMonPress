@@ -39,6 +39,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(validator());
 
+// Session
 const MongoStore = connectMongo(session);
 app.use(
   session({
@@ -50,9 +51,12 @@ app.use(
     })
   })
 );
+
+// Passport
 passport.use(localStrategy);
 app.use(passport.initialize());
 app.use(passport.session());
+
 app.use("/api", router);
 
 app.listen(config.node.port);

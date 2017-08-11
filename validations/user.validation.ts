@@ -34,7 +34,25 @@ class UserValidation {
     password: { in: "body", notEmpty: true }
   });
 
-  public userInfo = validator({
+  public show = validator({
+    id: {
+      in: "params",
+      notEmpty: true,
+      isMongoId: true,
+      errorMessage: "Please provide a valid ID"
+    }
+  });
+
+  public update = validator({
+    id: {
+      in: "params",
+      notEmpty: true,
+      isMongoId: true,
+      errorMessage: "Please provide a valid ID"
+    }
+  });
+
+  public destroy = validator({
     id: {
       in: "params",
       notEmpty: true,

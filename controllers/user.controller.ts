@@ -27,23 +27,29 @@ class UserController {
     }
   }
 
-  /**
-     * @api {get} /user/:id Request User Information
-     * @apiName userInfo
-     * @apiGroup User
-     *
-     * @apiParam {Number} id User's Unique Object ID.
-     *
-     * @apiSuccess {String} firstname Firstname of the User.
-     * @apiSuccess {String} lastname  Lastname of the User.
-     */
-  public async userInfo(req: Request, res: Response, next: NextFunction) {
-    const id = req.params.id;
+  public async show(req: Request, res: Response, next: NextFunction) {
+    return res.json(req.user);
+  }
+
+  public async update(req: Request, res: Response, next: NextFunction) {
+    const user: IUser = req.user;
+    user.name = req.body.name || user.name;
+    user.email = req.body.email || user.email;
+
     try {
-      const user = await userModel.findById(id);
-      user ? res.status(OK).json(user) : res.status(NOT_FOUND).send();
+      res.json(await user.save());
     } catch (error) {
-      res.status(BAD_REQUEST).json(error);
+      res.status(BAD_REQUEST).send(error);
+    }
+  }
+
+  public async destroy(req: Request, res: Response, next: NextFunction) {
+    const user: IUser = req.user;
+    user.remove();
+    try {
+      res.json(await user.remove());
+    } catch (error) {
+      res.status(BAD_REQUEST).send(error);
     }
   }
 }
