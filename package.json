@@ -11,6 +11,7 @@
     "build": "apidoc -o bin/docs -e node_modules && tsc"
   },
   "dependencies": {
+    "acl": "^0.4.10",
     "bluebird": "^3.5.0",
     "body-parser": "^1.17.1",
     "compression": "^1.6.2",
@@ -31,6 +32,7 @@
     "winston": "^2.3.1"
   },
   "devDependencies": {
+    "@types/acl": "^0.4.33",
     "@types/body-parser": "^1.16.3",
     "@types/compression": "^0.0.33",
     "@types/connect-mongo": "^0.0.32",
