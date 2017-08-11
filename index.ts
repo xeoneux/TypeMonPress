@@ -16,49 +16,70 @@ import config from "./config";
 import logger from "./helpers/logger";
 import router from "./routes";
 
+import { initialize } from "./config/acl";
 import { localStrategy } from "./config/passport";
 
-// Database
-mongoose.Promise = bluebird;
-mongoose.connect(config.mongo.host, { useMongoClient: true });
-mongoose.connection.on(
-  "error",
-  console.error.bind(console, `Connection Error on ${config.mongo.port}:`)
-);
+class Server {
+  async init() {
+    let db = await this.database();
+    let app = await this.configure();
 
-// Configure
-const app = express();
+    app.listen(config.node.port);
 
-if (config.node.env === "development") app.use(morgan("dev"));
+    logger.info(`Connected to database ${db.databaseName}`);
+    logger.info(`Server for ${config.node.env} started on ${config.node.port}`);
+  }
 
-app.use(cors());
-app.use(helmet());
-app.use(compression());
-app.use(cookieParser());
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(validator());
+  async database() {
+    mongoose.Promise = bluebird;
+    mongoose.connection.on(
+      "error",
+      console.error.bind(console, `Connection Error on ${config.mongo.port}:`)
+    );
+    await mongoose.connect(config.mongo.host, { useMongoClient: true });
 
-// Session
-const MongoStore = connectMongo(session);
-app.use(
-  session({
-    resave: false,
-    saveUninitialized: true,
-    secret: "secret",
-    store: new MongoStore({
-      mongooseConnection: mongoose.connection
-    })
-  })
-);
+    return mongoose.connection.db;
+  }
 
-// Passport
-passport.use(localStrategy);
-app.use(passport.initialize());
-app.use(passport.session());
+  async configure() {
+    const app = express();
 
-app.use("/api", router);
+    if (config.node.env === "development") app.use(morgan("dev"));
 
-app.listen(config.node.port);
+    app.use(cors());
+    app.use(helmet());
+    app.use(compression());
+    app.use(cookieParser());
+    app.use(bodyParser.json());
+    app.use(bodyParser.urlencoded({ extended: true }));
+    app.use(validator());
 
-logger.info(`Server for ${config.node.env} started on ${config.node.port}`);
+    // Session
+    const MongoStore = connectMongo(session);
+    app.use(
+      session({
+        resave: false,
+        saveUninitialized: true,
+        secret: "secret",
+        store: new MongoStore({
+          mongooseConnection: mongoose.connection
+        })
+      })
+    );
+
+    // ACL
+    initialize(mongoose.connection.db);
+
+    // Auth
+    passport.use(localStrategy);
+    app.use(passport.initialize());
+    app.use(passport.session());
+
+    // Route
+    app.use("/api", router);
+
+    return app;
+  }
+}
+
+new Server().init();
