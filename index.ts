@@ -16,6 +16,8 @@ import config from "./config";
 import logger from "./helpers/logger";
 import router from "./routes";
 
+import { localStrategy } from "./config/passport";
+
 // Database
 mongoose.Promise = bluebird;
 mongoose.connect(config.mongo.host, { useMongoClient: true });
@@ -48,6 +50,7 @@ app.use(
     })
   })
 );
+passport.use(localStrategy);
 app.use(passport.initialize());
 app.use(passport.session());
 app.use("/api", router);

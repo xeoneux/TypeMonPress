@@ -17,8 +17,9 @@ passport.deserializeUser<IUser, String>((id, done) => {
 /**
  * Sign in using Email and Password.
  */
-passport.use(
-  new LocalStrategy({ usernameField: "email" }, (email, password, done) => {
+export const localStrategy = new LocalStrategy(
+  { usernameField: "email" },
+  (email, password, done) => {
     userModel.findOne({ email: email.toLowerCase() }, (err, user) => {
       if (err) return done(err);
 
@@ -28,10 +29,11 @@ passport.use(
         });
 
       if (user.password === password) return done(undefined, user);
-      else
+      else {
         return done(undefined, false, {
           message: "Invalid email or password."
         });
+      }
     });
-  })
+  }
 );
