@@ -10,8 +10,9 @@ const LocalStrategy = passportLocal.Strategy;
 passport.serializeUser<IUser, String>((user, done) => done(undefined, user.id));
 passport.deserializeUser<IUser, String>((id, done) => {
   userModel.findById(id, (err, user) => {
+    if (err) done(err);
     if (user) done(err, user);
-    else done(new Error("User Not Found"));
+    done(new Error("User Not Found"));
   });
 });
 
