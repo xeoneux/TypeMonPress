@@ -16,9 +16,6 @@ import config from "./config";
 import logger from "./helpers/logger";
 import router from "./routes";
 
-import { initialize } from "./config/acl";
-import { localStrategy } from "./config/passport";
-
 class Server {
   public async init() {
     const db = await this.database();
@@ -69,15 +66,12 @@ class Server {
       })
     );
 
-    // ACL
-    initialize(mongoose.connection.db);
+    import("./config/acl");
+    import("./config/passport");
 
-    // Auth
-    passport.use(localStrategy);
     app.use(passport.initialize());
     app.use(passport.session());
 
-    // Route
     app.use("/api", router);
 
     return app;

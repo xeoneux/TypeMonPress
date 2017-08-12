@@ -18,7 +18,7 @@ passport.deserializeUser<IUser, String>((id, done) => {
 /**
  * Sign in using Email and Password.
  */
-export const localStrategy = new LocalStrategy(
+const localStrategy = new LocalStrategy(
   { usernameField: "email" },
   (email, password, done) => {
     userModel.findOne({ email: email.toLowerCase() }, (err, user) => {
@@ -38,3 +38,5 @@ export const localStrategy = new LocalStrategy(
     });
   }
 );
+
+passport.use(localStrategy);
