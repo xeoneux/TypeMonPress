@@ -20,9 +20,9 @@ import { initialize } from "./config/acl";
 import { localStrategy } from "./config/passport";
 
 class Server {
-  async init() {
-    let db = await this.database();
-    let app = await this.configure();
+  public async init() {
+    const db = await this.database();
+    const app = await this.configure();
 
     app.listen(config.node.port);
 
@@ -30,7 +30,7 @@ class Server {
     logger.info(`Server for ${config.node.env} started on ${config.node.port}`);
   }
 
-  async database() {
+  private async database() {
     mongoose.Promise = bluebird;
     mongoose.connection.on(
       "error",
@@ -41,10 +41,12 @@ class Server {
     return mongoose.connection.db;
   }
 
-  async configure() {
+  private async configure() {
     const app = express();
 
-    if (config.node.env === "development") app.use(morgan("dev"));
+    if (config.node.env === "development") {
+      app.use(morgan("dev"));
+    }
 
     app.use(cors());
     app.use(helmet());

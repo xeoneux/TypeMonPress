@@ -2,7 +2,8 @@ import passport = require("passport");
 import passportLocal = require("passport-local");
 
 import { IUser, userModel } from "../models";
-import { Request, Response, NextFunction } from "express";
+
+import { NextFunction, Request, Response } from "express";
 
 const LocalStrategy = passportLocal.Strategy;
 
