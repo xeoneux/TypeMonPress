@@ -32,10 +32,10 @@ class Server {
 
   private async database() {
     mongoose.Promise = bluebird;
-    mongoose.connection.on(
-      "error",
-      console.error.bind(console, `Connection Error on ${config.mongo.port}:`)
-    );
+    mongoose.connection.on("error", () => {
+      logger.error(`DB connection error on port ${config.mongo.port}`);
+      process.exit(1);
+    });
     await mongoose.connect(config.mongo.host, { useMongoClient: true });
 
     return mongoose.connection.db;
