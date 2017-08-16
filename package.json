@@ -8,7 +8,8 @@
   "scripts": {
     "start": "tsc && concurrently -k -p \"{name} >>>\" -n \"TS,NODE\" -c \"cyan.bold,yellow.bold\" \"tsc -w\" \"nodemon bin\"",
     "debug": "tsc && concurrently -k -p \"{name} >>>\" -n \"TS,NODE\" -c \"cyan.bold,yellow.bold\" \"tsc -w\" \"nodemon --inspect bin\"",
-    "build": "apidoc -o bin/docs -e node_modules && tsc"
+    "build": "apidoc -o bin/docs -e node_modules && tsc",
+    "test": "mocha -r ts-node/register tests/**.ts"
   },
   "dependencies": {
     "acl": "^0.4.10",
