@@ -15,7 +15,7 @@ import validator = require("express-validator");
 import config from "./config";
 import logger from "./helpers/logger";
 
-class Server {
+export class Server {
   public async init() {
     const db = await this.database();
     const app = await this.configure();
@@ -67,12 +67,13 @@ class Server {
 
     await import("./config/acl");
     await import("./config/passport");
-    const routes = await import("./routes");
+
+    const { router } = await import("./routes");
 
     app.use(passport.initialize());
     app.use(passport.session());
 
-    app.use("/api", routes.router);
+    app.use("/api", router);
 
     return app;
   }
