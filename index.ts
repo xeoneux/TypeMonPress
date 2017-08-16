@@ -24,6 +24,8 @@ export class Server {
 
     logger.info(`Connected to database ${db.databaseName}`);
     logger.info(`Server for ${config.node.env} started on ${config.node.port}`);
+
+    return { db, app };
   }
 
   private async database() {
