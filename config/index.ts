@@ -1,5 +1,5 @@
+import Joi = require("joi");
 import { config } from "dotenv";
-import * as Joi from "joi";
 
 config();
 
@@ -20,13 +20,7 @@ if (error) {
   throw new Error(`Config Validation Error: ${error.message}`);
 }
 
-export default {
-  mongo: {
-    host: env.MONGO_HOST,
-    port: env.MONGO_PORT
-  },
-  node: {
-    env: env.NODE_ENV,
-    port: env.PORT
-  }
-};
+const mongo = { host: env.MONGO_HOST, port: env.MONGO_PORT };
+const node = { env: env.NODE_ENV, port: env.PORT };
+
+export { mongo, node };
