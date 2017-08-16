@@ -12,18 +12,18 @@ import passport = require("passport");
 import session = require("express-session");
 import validator = require("express-validator");
 
-import config from "./config";
 import logger from "./helpers/logger";
+import { mongo, node } from "./config";
 
 export class Server {
   public async init() {
     const db = await this.database();
     const app = await this.configure();
 
-    app.listen(config.node.port);
+    app.listen(node.port);
 
     logger.info(`Connected to database ${db.databaseName}`);
-    logger.info(`Server for ${config.node.env} started on ${config.node.port}`);
+    logger.info(`Server for ${node.env} started on ${node.port}`);
 
     return { db, app };
   }
@@ -31,10 +31,10 @@ export class Server {
   private async database() {
     mongoose.Promise = bluebird;
     mongoose.connection.on("error", () => {
-      logger.error(`DB connection error on port ${config.mongo.port}`);
+      logger.error(`DB connection error on port ${mongo.port}`);
       process.exit(1);
     });
-    await mongoose.connect(config.mongo.host, { useMongoClient: true });
+    await mongoose.connect(mongo.host, { useMongoClient: true });
 
     return mongoose.connection.db;
   }
@@ -42,9 +42,7 @@ export class Server {
   private async configure() {
     const app = express();
 
-    if (config.node.env === "development") {
-      app.use(morgan("dev"));
-    }
+    if (node.env === "development") app.use(morgan("dev"));
 
     app.use(cors());
     app.use(helmet());
