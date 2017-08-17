@@ -1,5 +1,13 @@
 import Joi = require("joi");
+import { resolve } from "path";
 import { config } from "dotenv";
+import { copySync, existsSync } from "fs-extra";
+
+if (!existsSync("../.env"))
+  copySync(
+    resolve(__dirname, "../.env.example"),
+    resolve(__dirname, "../.env")
+  );
 
 config();
 
@@ -7,7 +15,7 @@ const schema = Joi.object({
   MONGO_HOST: Joi.string().required().description("Mongo DB Host URL"),
   MONGO_PORT: Joi.number().default(27017),
   NODE_ENV: Joi.string()
-    .allow(["development", "production"])
+    .allow(["test", "development", "production"])
     .default("development"),
   PORT: Joi.number().default(1234)
 })
