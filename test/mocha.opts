@@ -1,0 +1,4 @@
+--require ts-node/register
+--reporter spec
+--timeout 5s
+--ui bdd

@@ -6,7 +6,7 @@
   "author": "Aayush Kapoor <xeoneux@icloud.com>",
   "license": "MIT",
   "scripts": {
-    "test": "mocha -r ts-node/register test/**.ts",
+    "test": "mocha test/**.ts",
     "start": "tsc && concurrently -k -p \"{name} >>>\" -n \"TS,NODE\" -c \"cyan.bold,yellow.bold\" \"tsc -w\" \"nodemon dist\"",
     "debug": "tsc && concurrently -k -p \"{name} >>>\" -n \"TS,NODE\" -c \"cyan.bold,yellow.bold\" \"tsc -w\" \"nodemon --inspect dist\"",
     "build": "apidoc -o dist/docs -e node_modules && tsc"
