@@ -13,7 +13,7 @@ import session = require("express-session");
 import validator = require("express-validator");
 
 import { mongo, node } from "../config";
-import logger from "../config/logger";
+import { logger } from "../config/logger";
 
 export class Server {
   public async init() {

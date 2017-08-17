@@ -36,4 +36,4 @@ if (node.env === "production")
     transports: [consoleTransport, fileTransport]
   });
 
-export default logger;
+export { logger };
