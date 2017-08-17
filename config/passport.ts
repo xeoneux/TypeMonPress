@@ -1,7 +1,7 @@
 import passport = require("passport");
 import passportLocal = require("passport-local");
 
-import { IUser, userModel } from "../models";
+import { IUser, userModel } from "../src/models";
 
 import { NextFunction, Request, Response } from "express";
 

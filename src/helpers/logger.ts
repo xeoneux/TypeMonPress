@@ -1,4 +1,4 @@
-import { mongo, node } from "../config";
+import { mongo, node } from "../../config";
 import { existsSync, mkdirSync } from "fs";
 import { config, Logger, addColors, setLevels, transports } from "winston";
 

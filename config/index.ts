@@ -1,13 +1,5 @@
 import Joi = require("joi");
-import { resolve } from "path";
 import { config } from "dotenv";
-import { copySync, existsSync } from "fs-extra";
-
-if (!existsSync("../.env"))
-  copySync(
-    resolve(__dirname, "../.env.example"),
-    resolve(__dirname, "../.env")
-  );
 
 config();
 
