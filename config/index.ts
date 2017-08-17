@@ -4,7 +4,7 @@ import { config } from "dotenv";
 config();
 
 const schema = Joi.object({
-  MONGO_HOST: Joi.string().required().description("Mongo DB Host URL"),
+  MONGO_HOST: Joi.string().default("mongodb://localhost/TypeMonPress"),
   MONGO_PORT: Joi.number().default(27017),
   NODE_ENV: Joi.string()
     .allow(["test", "development", "production"])
