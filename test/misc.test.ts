@@ -6,7 +6,7 @@ import { Express } from "express";
 
 import { BAD_REQUEST, NOT_FOUND } from "http-status-codes";
 
-import { Server } from "../server";
+import { Server } from "../src/server";
 
 let db: Db;
 let app: Express;

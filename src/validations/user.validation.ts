@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 
-import { validator } from "../helpers/validator";
+import { validator } from "../../config/validator";
 
 class UserValidation {
   public index = validator({

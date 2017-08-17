@@ -12,8 +12,8 @@ import passport = require("passport");
 import session = require("express-session");
 import validator = require("express-validator");
 
-import logger from "./helpers/logger";
-import { mongo, node } from "./config";
+import { mongo, node } from "../config";
+import logger from "../config/logger";
 
 export class Server {
   public async init() {
@@ -65,8 +65,8 @@ export class Server {
       })
     );
 
-    await import("./config/acl");
-    await import("./config/passport");
+    await import("./helpers/acl");
+    await import("./helpers/passport");
 
     const { router } = await import("./routes");
 
