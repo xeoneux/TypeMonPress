@@ -42,8 +42,6 @@ export class Server {
   private async configure() {
     const app = express();
 
-    if (node.env === "development") app.use(morgan("dev"));
-
     app.use(cors());
     app.use(helmet());
     app.use(compression());
@@ -68,12 +66,19 @@ export class Server {
     await import("../config/acl");
     await import("../config/passport");
 
-    const { router } = await import("./routes");
-
+    
     app.use(passport.initialize());
     app.use(passport.session());
 
-    app.use("/api", router);
+    let route = "/api";
+    if (node.env === "development") {
+      route = "/dev/api";
+      app.use(morgan("dev"));
+    }
+
+    const { router } = await import("./routes");
+    app.use(route, router);
+
 
     return app;
   }
