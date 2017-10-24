@@ -47,8 +47,8 @@ const localStrategy = new LocalStrategy(
  */
 const facebookStrategy = new FacebookStrategy(
   {
-    clientID: process.env.FACEBOOK_ID,
-    clientSecret: process.env.FACEBOOK_SECRET,
+    clientID: process.env.FACEBOOK_ID || 'examplefacebookid',
+    clientSecret: process.env.FACEBOOK_SECRET || 'examplefacebooksecret',
     callbackURL: "/auth/facebook/callback",
     profileFields: ["name", "email", "link", "locale", "timezone"],
     passReqToCallback: true
@@ -124,4 +124,4 @@ const facebookStrategy = new FacebookStrategy(
 );
 
 passport.use(localStrategy);
-passport.use(localStrategy);
+passport.use(facebookStrategy);
