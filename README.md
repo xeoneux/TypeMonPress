@@ -37,14 +37,14 @@ Deployment:
 # Compile to JS
 1. npm run build
 
-# Upload bin/ to your server
-2. scp -rp bin/ user@dest:/path
+# Upload dist/ to your server
+2. scp -rp dist/ user@dest:/path
 
 # Install production dependencies only
 3. npm install --production
 
 # Use any process manager to start your services
-4. pm2 start bin/index.js
+4. pm2 start dist/index.js
 ```
 
 In production you need to make sure your server is always up so you should ideally use any of the process manager recommended [here](http://expressjs.com/en/advanced/pm.html).
